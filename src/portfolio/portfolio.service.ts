@@ -12,7 +12,7 @@ export class PortfolioService {
     ) { }
 
     async get() {
-        return this.portfolioRepository.findOne({ relations: ['skills'] });
+        return this.portfolioRepository.findOne({ where: { id: 1 }, relations: ['skills'] });
     }
 
     async getOne() {
