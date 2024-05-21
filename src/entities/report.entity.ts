@@ -1,5 +1,6 @@
 import { IsEmail } from 'class-validator';
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToOne } from 'typeorm';
+import { Guest_Book } from './guest_books.entity';
 
 @Entity()
 export class Report {
@@ -7,11 +8,10 @@ export class Report {
     id: number;
 
     @Column()
-    @IsEmail({}, { message: '유효하지 않은 이메일 형식입니다.' })
-    email: string;
+    reason: string;
 
     @Column()
-    reason: string;
+    guestBookId: number;
 
     @Column({ default: false })
     isReviewed: boolean = false;

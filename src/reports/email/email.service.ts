@@ -10,15 +10,9 @@ export class EmailService {
     constructor() {
         this.transporter = nodemailer.createTransport({
             service: 'gmail',
-            host: 'smtp.gmail.com',
-            port: 587,
-            secure: true,
             auth: {
-                type: "OAuth2",
-                user: config.mailer.gmailUser,
-                clientId: config.mailer.gmailClientId,
-                clientSc: config.mailer.gmailClientSecret,
-                refreshToken: config.mailer.gmailRefreshToken,
+                user: 'risingm117@gmail.com',
+                pass: 'ytfx fniv nrll qrcm',
             },
         });
     }
@@ -26,7 +20,7 @@ export class EmailService {
     async sendEmail(from: string, subject: string, text: string) {
         const mailOptions = {
             from: from,
-            to: config.mailer.adminEmail,
+            to: 'kate010117@naver.com',//config.mailer.adminEmail,
             subject: subject,
             text: text,
         };

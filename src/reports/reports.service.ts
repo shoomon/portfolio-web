@@ -26,11 +26,12 @@ export class ReportsService {
 
     async report(reportData: ReportDto) {
         const adminEmail = config.mailer.adminEmail;
-        const reportContents = '신고자 이메일: ${reportData.email}\n신고사유: ${reportData.reason}';
-        await this.emailService.sendEmail(reportData.email, '방명록 신고', reportContents);
+        const reportContents = `신고자 이메일:\n신고사유: ${reportData.reason}`;
+        await this.emailService.sendEmail('abcd@gmail.com', '방명록 신고', reportContents);
+        const guestBook = await this.guest_bookService.getOneById(reportData.id)
 
         const report = this.reportReposiitory.create({
-            email: reportData.email,
+            guestBookId: guestBook.id,
             reason: reportData.reason,
         });
         await this.reportReposiitory.save(report);

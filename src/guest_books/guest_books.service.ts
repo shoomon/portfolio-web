@@ -24,6 +24,11 @@ export class Guest_BooksService {
         return { data, pageInfo: { page, hasNextPage } };
     }
 
+    async getOneById(id: number) {
+        const guestBook = await this.guest_bookRepository.findOne({ where: { id } })
+        return guestBook
+    }
+
     async create(createGuestBookRequest: CreateGuestBookDto): Promise<Guest_Book> {
         const newDiary = this.guest_bookRepository.create({ ...createGuestBookRequest });
         return await this.guest_bookRepository.save(newDiary);

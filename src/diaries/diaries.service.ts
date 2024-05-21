@@ -24,7 +24,6 @@ export class DiariesService {
     }
 
     async create(createDiaryRequest: CreateDiaryDto): Promise<Diaries> {
-        console.log(new Date())
         const newDiary = this.diariesRepository.create({ ...createDiaryRequest });
         return await this.diariesRepository.save(newDiary);
     }

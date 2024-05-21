@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Patch, Put, Query } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post, Query } from '@nestjs/common';
 import { Guest_BooksService } from './guest_books.service';
 import { CreateGuestBookDto, UpdateGuestBookDto } from 'src/dtos/guest_book.dto';
 import { ApiTags } from '@nestjs/swagger';
@@ -15,7 +15,7 @@ export class Guest_BooksController {
         return this.guest_bookService.get(page, size);
     }
 
-    @Put()
+    @Post()
     async create(@Body() createGuestBookRequest: CreateGuestBookDto) {
         return this.guest_bookService.create(createGuestBookRequest);
     }
